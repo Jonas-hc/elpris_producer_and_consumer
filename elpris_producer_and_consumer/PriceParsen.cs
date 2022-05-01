@@ -15,7 +15,7 @@ namespace elpris_producer_and_consumer
         {
             string[] myInfo = new string[2];
             string time = "0";
-            string price = "0.0";
+            string price = "null";
             myInfo[0] = time;
             myInfo[1] = price;
 
@@ -31,14 +31,20 @@ namespace elpris_producer_and_consumer
             {
                 if (item["HourDK"].ToString().Substring(0, 10).IndexOf(t4) > -1)
                 {
+                    
                     if (item["PriceArea"].ToString().IndexOf("DK") > -1)
                     {
                         time = t4;
                         myInfo[0] = time;
+                       
                         if (item["SpotPriceDKK"].ToString().Length < 0)
                         {
                             myInfo[1] = item["SpotPriceDKK"].ToString();
-                            
+                        }
+                        else {
+                            double eur = Convert.ToDouble(item["SpotPriceEUR"].ToString());
+                            double dkk = Math.Round((eur * 7.5 / 1000), 2);
+                            myInfo[1] = dkk.ToString();
                         }
                     }
                 }

@@ -26,7 +26,7 @@ namespace elpris_producer_and_consumer
             };
             using var consumer = new ConsumerBuilder<Ignore, string>(config).Build();
             consumer.Subscribe("quickstart-events");
-            Console.WriteLine("Ready");
+            //Console.WriteLine("Ready");
 
             while (running)
             {
@@ -36,13 +36,13 @@ namespace elpris_producer_and_consumer
 
                 Console.WriteLine($"Besked modtaget: {message}");
 
-                Console.WriteLine("Sleep");
+                //Console.WriteLine("Sleep");
                 Thread.Sleep(5000);
-                Console.WriteLine("Awake");
+                //Console.WriteLine("Awake");
 
                 Start(false);
             }
-            Console.WriteLine("Close");
+            //Console.WriteLine("Close");
             consumer.Close();
         }
     }

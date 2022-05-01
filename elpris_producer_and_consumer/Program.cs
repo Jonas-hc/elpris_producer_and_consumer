@@ -32,7 +32,7 @@ namespace elpris_producer_and_consumer
             jc.Put(jsonString);
 
             Kafka_producer kc = new Kafka_producer();
-            string message = $"The price today {price[0]}, is {price[1]}";
+            string message = $"The price today {price[0]}, is {price[1]} dkk";
             kc.Produce(message);
         }
     }
